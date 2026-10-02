@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduTest — Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #101827;
+        }
+
+        .login-box {
+            width: 380px;
+            padding: 35px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .logo {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 18px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #error {
+            display: none;
+            color: #dc2626;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        #profile {
+            display: none;
+            width: 500px;
+            padding: 35px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+        }
+
+        .profile-title {
+            color: #2563eb;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: #f3f4f6;
+            border-radius: 10px;
+        }
+
+        .info b {
+            display: inline-block;
+            width: 120px;
+        }
+
+        .logout {
+            margin-top: 20px;
+            background: #dc2626;
+        }
+
+        .logout:hover {
+            background: #b91c1c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- LOGIN -->
+    <div class="login-box" id="loginBox">
+
+        <div class="logo">EduTest</div>
+
+        <div class="subtitle">
+            Online Test Platformasi
+        </div>
+
+        <form onsubmit="login(event)">
+
+            <label>Login</label>
+            <input
+                type="text"
+                id="username"
+                placeholder="Loginni kiriting"
+                required
+            >
+
+            <label>Parol</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Parolni kiriting"
+                required
+            >
+
+            <button type="submit">
+                Kirish
+            </button>
+
+        </form>
+
+        <div id="error">
+            Login yoki parol noto‘g‘ri!
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE -->
+    <div id="profile">
+
+        <div class="profile-title">
+            Mening profilim
+        </div>
+
+        <div class="info">
+            <b>Ism:</b>
+            Doston
+        </div>
+
+        <div class="info">
+            <b>Familiya:</b>
+            Baxtiyarov
+        </div>
+
+        <div class="info">
+            <b>Login:</b>
+            doston123
+        </div>
+
+        <div class="info">
+            <b>Sinf:</b>
+            9-A
+        </div>
+
+        <div class="info">
+            <b>Ball:</b>
+            86 / 100
+        </div>
+
+        <div class="info">
+            <b>Holat:</b>
+            Faol
+        </div>
+
+        <button class="logout" onclick="logout()">
+            Chiqish
+        </button>
+
+    </div>
+
+
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+            const username =
+                document.getElementById("username").value;
+
+            const password =
+                document.getElementById("password").value;
+
+            // TEST LOGIN
+            if (
+                username === "doston123" &&
+                password === "123456"
+            ) {
+
+                document.getElementById("loginBox").style.display = "none";
+
+                document.getElementById("profile").style.display = "block";
+
+                document.getElementById("error").style.display = "none";
+
+            } else {
+
+                document.getElementById("error").style.display = "block";
+
+            }
+        }
+
+
+        function logout() {
+
+            document.getElementById("profile").style.display = "none";
+
+            document.getElementById("loginBox").style.display = "block";
+
+            document.getElementById("username").value = "";
+
+            document.getElementById("password").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
